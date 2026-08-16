@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الجوهرة لنقل الأثاث</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;800;900&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1a1330;
+    --glass-bg:rgba(255,255,255,0.14);
+    --glass-bg-strong:rgba(255,255,255,0.22);
+    --glass-border:rgba(255,255,255,0.35);
+    --amber:#FFC24B;
+    --amber-deep:#FF8A3D;
+    --violet:#7C6CF0;
+    --text-light:#FFF7EA;
+    --text-dim:rgba(255,247,234,0.72);
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+
+  html,body{ height:100%; }
+
+  body{
+    font-family:'Tajawal', sans-serif;
+    color:var(--text-light);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    padding:40px 16px 60px;
+    position:relative;
+    overflow-x:hidden;
+    background:
+      radial-gradient(60% 50% at 15% 8%, rgba(124,108,240,0.55), transparent 65%),
+      radial-gradient(55% 45% at 90% 15%, rgba(255,138,61,0.5), transparent 60%),
+      radial-gradient(70% 55% at 50% 100%, rgba(255,194,75,0.4), transparent 60%),
+      linear-gradient(160deg, #1a1330 0%, #241c42 45%, #17223f 100%);
+    background-attachment:fixed;
+  }
+
+  .blob{
+    position:fixed;
+    border-radius:50%;
+    filter:blur(60px);
+    z-index:0;
+    opacity:.55;
+    pointer-events:none;
+  }
+  .blob-1{ width:280px; height:280px; background:var(--amber); top:-60px; right:-80px; animation:float1 9s ease-in-out infinite; }
+  .blob-2{ width:220px; height:220px; background:var(--violet); bottom:10%; left:-70px; animation:float2 11s ease-in-out infinite; }
+  .blob-3{ width:180px; height:180px; background:var(--amber-deep); bottom:-40px; right:10%; animation:float1 13s ease-in-out infinite reverse; }
+
+  @keyframes float1{ 0%,100%{ transform:translateY(0) } 50%{ transform:translateY(24px) } }
+  @keyframes float2{ 0%,100%{ transform:translateY(0) } 50%{ transform:translateY(-22px) } }
+
+  @media (prefers-reduced-motion: reduce){
+    .blob, .ticket-wrap, .link-item{ animation:none !important; transition:none !important; }
+  }
+
+  .ticket-wrap{
+    width:100%;
+    max-width:430px;
+    position:relative;
+    z-index:1;
+    animation: rise .7s ease both;
+  }
+
+  @keyframes rise{
+    from{ opacity:0; transform:translateY(18px); }
+    to{ opacity:1; transform:translateY(0); }
+  }
+
+  .glass{
+    background:var(--glass-bg);
+    backdrop-filter:blur(22px) saturate(140%);
+    -webkit-backdrop-filter:blur(22px) saturate(140%);
+    border:1px solid var(--glass-border);
+    box-shadow:0 8px 32px rgba(10,6,30,0.35), inset 0 1px 0 rgba(255,255,255,0.25);
+  }
+
+  .header-card{
+    border-radius:26px;
+    padding:28px 24px 26px;
+    text-align:center;
+    margin-bottom:16px;
+  }
+
+  .eyebrow-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-family:'Cairo', sans-serif;
+    font-weight:700;
+    font-size:11px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--text-dim);
+  }
+
+  .eyebrow-row span{
+    border:1px solid var(--glass-border);
+    background:rgba(255,255,255,0.08);
+    border-radius:20px;
+    padding:4px 10px;
+  }
+
+  .avatar-ring{
+    width:96px; height:96px;
+    margin:18px auto 4px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(135deg, var(--amber), var(--amber-deep));
+    box-shadow:0 6px 20px rgba(255,138,61,0.45), inset 0 1px 0 rgba(255,255,255,0.5);
+  }
+  .avatar-ring svg{ width:56px; height:56px; }
+
+  .biz-name{
+    font-family:'Cairo', sans-serif;
+    font-weight:900;
+    font-size:25px;
+    line-height:1.35;
+    margin-top:12px;
+    text-shadow:0 2px 12px rgba(0,0,0,0.25);
+  }
+
+  .biz-tagline{
+    font-size:13.5px;
+    color:var(--text-dim);
+    margin-top:6px;
+    line-height:1.5;
+  }
+
+  .phone-pill{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    background:rgba(255,255,255,0.18);
+    border:1px solid var(--glass-border);
+    color:var(--text-light);
+    font-family:'Cairo', sans-serif;
+    font-weight:700;
+    font-size:15px;
+    padding:9px 20px;
+    border-radius:999px;
+    margin-top:16px;
+    direction:ltr;
+    text-decoration:none;
+  }
+
+  .section-label{
+    font-family:'Cairo', sans-serif;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:.12em;
+    color:var(--text-dim);
+    text-transform:uppercase;
+    margin:4px 6px 10px;
+  }
+
+  .links{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+
+  .link-item{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    border-radius:16px;
+    padding:14px 16px;
+    text-decoration:none;
+    color:var(--text-light);
+    transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+  }
+
+  .link-item:hover, .link-item:focus-visible{
+    transform:translateY(-3px);
+    background:var(--glass-bg-strong);
+    box-shadow:0 12px 28px rgba(10,6,30,0.4);
+    outline:none;
+  }
+
+  .item-icon{
+    width:42px; height:42px;
+    flex-shrink:0;
+    border-radius:13px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(255,255,255,0.16);
+    border:1px solid var(--glass-border);
+  }
+  .item-icon svg{ width:21px; height:21px; stroke:var(--text-light); fill:none; stroke-width:1.8; }
+
+  .item-text{ flex:1; }
+  .item-title{ font-weight:700; font-size:15.5px; }
+  .item-sub{ font-size:11.5px; color:var(--text-dim); margin-top:1px; }
+
+  .item-arrow{ font-size:17px; color:var(--text-dim); }
+
+  .footer-card{
+    border-radius:22px;
+    padding:18px 22px;
+    text-align:center;
+    margin-top:16px;
+  }
+
+  .footer-address{ font-size:13px; color:var(--text-dim); }
+  .stamp{
+    display:inline-block;
+    margin-top:12px;
+    font-family:'Cairo', sans-serif;
+    font-size:10.5px;
+    font-weight:700;
+    letter-spacing:.14em;
+    color:var(--amber);
+    border:1px solid rgba(255,194,75,0.5);
+    background:rgba(255,194,75,0.1);
+    border-radius:20px;
+    padding:5px 12px;
+    text-transform:uppercase;
+  }
+</style>
+</head>
+<body>
+
+<div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
+<div class="blob blob-3"></div>
+
+<div class="ticket-wrap">
+
+  <div class="header-card glass">
+    <div class="eyebrow-row">
+      <span>خدمة نقل الأثاث</span>
+      <span>عمّان</span>
+    </div>
+
+    <div class="avatar-ring">
+      <svg viewBox="0 0 220 110" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="35" width="115" height="45" rx="4" fill="#1a1330" opacity="0.9"/>
+        <path d="M125 45 H165 L190 70 V80 H125 Z" fill="#1a1330" opacity="0.6"/>
+        <circle cx="45" cy="85" r="12" fill="#1a1330"/>
+        <circle cx="170" cy="85" r="12" fill="#1a1330"/>
+        <line x1="10" y1="95" x2="200" y2="95" stroke="#1a1330" stroke-width="3"/>
+      </svg>
+    </div>
+
+    <div class="biz-name">الجوهرة لنقل الأثاث</div>
+    <div class="biz-tagline">فك، تغليف، نقل وتركيب أثاث بعناية داخل الأردن</div>
+    <a class="phone-pill" href="https://wa.me/962795601898" target="_blank" rel="noopener">📞 0795601898</a>
+  </div>
+
+  <div class="section-label">بيانات التواصل</div>
+  <div class="links">
+
+    <a class="link-item glass" href="https://wa.me/962795601898" target="_blank" rel="noopener">
+      <span class="item-icon">
+        <svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 20l1.1-5.4A8.5 8.5 0 1 1 21 11.5Z"/><path d="M8.5 10.5c0 3 2.5 5.5 5.5 5.5" stroke-linecap="round"/></svg>
+      </span>
+      <span class="item-text">
+        <div class="item-title">واتساب</div>
+        <div class="item-sub">تواصل مباشر لحجز موعد النقل</div>
+      </span>
+      <span class="item-arrow">←</span>
+    </a>
+
+    <a class="link-item glass" href="https://www.instagram.com/moving_furniture0795601898?igsh=aGV3bzA0bHBtZHhw" target="_blank" rel="noopener">
+      <span class="item-icon">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="0.6" fill="var(--text-light)" stroke="none"/></svg>
+      </span>
+      <span class="item-text">
+        <div class="item-title">إنستغرام</div>
+        <div class="item-sub">صور ومقاطع من أعمال النقل</div>
+      </span>
+      <span class="item-arrow">←</span>
+    </a>
+
+    <a class="link-item glass" href="https://www.snapchat.com/add/moveng1?share_id=Wk3dZc37V-4&locale=ar-EG" target="_blank" rel="noopener">
+      <span class="item-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 3c4 0 6 3 6 6.5 0 1-.2 1.8-.5 2.5.7.3 1.5.8 1.5 1.5 0 1-1.2 1.3-1.9 1.4.1.5-.1 1.1-.7 1.3-.4 1.2-1.6 1.8-2.4 2-.3.7-1 1.3-2 1.3s-1.7-.6-2-1.3c-.8-.2-2-.8-2.4-2-.6-.2-.8-.8-.7-1.3-.7-.1-1.9-.4-1.9-1.4 0-.7.8-1.2 1.5-1.5-.3-.7-.5-1.5-.5-2.5C6 6 8 3 12 3Z"/></svg>
+      </span>
+      <span class="item-text">
+        <div class="item-title">سناب شات</div>
+        <div class="item-sub">آخر التحديثات يومياً</div>
+      </span>
+      <span class="item-arrow">←</span>
+    </a>
+
+    <a class="link-item glass" href="https://www.facebook.com/share/1AnT2x1iBd/" target="_blank" rel="noopener">
+      <span class="item-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M13.5 8.5h-1.8c-1 0-1.5.5-1.5 1.5v1.2H8.5v2.2h1.7V21h2.4v-7.6h1.7l.3-2.2h-2v-1c0-.5.2-.8.9-.8h1.1V8.5Z" fill="var(--text-light)" stroke="none"/></svg>
+      </span>
+      <span class="item-text">
+        <div class="item-title">فيسبوك</div>
+        <div class="item-sub">صفحتنا الرسمية وآراء الزبائن</div>
+      </span>
+      <span class="item-arrow">←</span>
+    </a>
+
+    <a class="link-item glass" href="https://5d296f8d19b74.site123.me/%D8%AE%D8%AF%D9%85%D8%A7%D8%AA-%D9%86%D9%82%D9%84-%D8%A7%D9%84%D8%A7%D8%AB%D8%A7%D8%AB-%D9%88%D9%86%D9%82%D9%84-%D8%A7%D9%84%D8%B9%D9%81%D8%B4-%D9%81%D9%8A-%D8%A7%D9%84%D8%A7%D8%B1%D8%AF%D9%86-%D9%88%D8%B3%D9%88%D8%B1%D9%8A%D8%A7-%D9%85%D8%B9-%D8%AA%D8%BA%D9%84%D9%8A%D9%81-%D9%88%D9%81%D9%83-%D9%88%D8%AA%D8%B1%D9%83%D9%8A%D8%A8" target="_blank" rel="noopener">
+      <span class="item-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.5 6 3.5 9s-1 6.5-3.5 9c-2.5-2.5-3.5-6-3.5-9s1-6.5 3.5-9Z"/></svg>
+      </span>
+      <span class="item-text">
+        <div class="item-title">الموقع الإلكتروني</div>
+        <div class="item-sub">تفاصيل خدمات النقل والتغليف والتركيب</div>
+      </span>
+      <span class="item-arrow">←</span>
+    </a>
+
+  </div>
+
+  <div class="footer-card glass">
+    <div class="footer-address">📍 ش. وصفي التل، عمّان، الأردن</div>
+    <div class="stamp">توصيل بأمان</div>
+  </div>
+
+</div>
+
+</body>
+</html>
